@@ -1,0 +1,85 @@
+body {
+    height: 100%;
+}
+
+#wrapper-container {
+	min-height: 100%;
+	position: relative;
+}
+
+#page-container {
+	padding-bottom: 100px;
+}
+
+.page-footer {
+	width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@media only screen and (max-width: 992px) {	
+	#connect-menu {
+		bottom: 75px;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.nav-content {
+		text-align: center;
+	}
+	
+	.tabs {
+		display: inline-block;
+		width: auto;
+	}
+}
+
+.brand-logo {
+	border-bottom: white 1px solid;
+}
+
+.page-title {
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+
+.picker__close {
+	margin: auto;
+}
+
+#connect-menu {
+	right: initial;
+    margin-left: 25px;
+}
+
+@media only screen and (max-width: 440px) {	
+	#connect-menu {
+		margin-left: 0px;
+		left: -24px;
+	}
+}
+
+nav.nav-extended .nav-wrapper {
+    min-height: 70px;
+}
+
+.send {
+	margin-top: 25px;
+}
+
+#modal-auth {
+	max-height: 80%;
+}
+
+#modal-auth .modal-content {
+	padding: 0px;
+}
+
+#modal-auth .col {
+	padding: 0px;
+}
+
+#modal-auth .tabs {
+	margin-bottom: 25px;
+}

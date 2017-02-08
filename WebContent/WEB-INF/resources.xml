@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+	<Resource id="jdbcMySQL" type="DataSource">
+		JdbcDriver com.mysql.jdbc.Driver
+		JdbcUrl jdbc:mysql://localhost/project-jee-2?useSSL=false
+		UserName root
+		Password
+		JtaManaged false
+	</Resource>
+</tomee>

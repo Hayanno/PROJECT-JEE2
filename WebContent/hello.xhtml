@@ -1,0 +1,159 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+  
+    <h:head>
+    
+    	<title>Gestionnaire de CV</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    	
+    	<h:outputStylesheet library="css" name="materialize.min.css" />
+    	<h:outputStylesheet library="css" name="style.css" />
+    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  
+    </h:head>  
+      
+    <h:body>
+	    <div id="wrapper-container">
+			<nav class="teal nav-extended">
+			  	<div class="nav-wrapper">
+	     			<a href="#" class="brand-logo center">Gestionnaire de CV</a>
+	   			</div>
+			  	<div class="nav-content">
+			  		<ul class="tabs tabs-transparent">
+			    		<li class="tab"><a href="#test1">Test 1</a></li>
+			    		<li class="tab"><a class="active" href="#test2">Test 2</a></li>
+			    		<li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+			    		<li class="tab"><a href="#test4">Test 4</a></li>
+					</ul>
+					<a href="#modal-auth" id="connect-menu" class="btn-floating btn-large halfway-fab waves-effect red lighten-2">
+					  	<i class="material-icons">account_circle</i>
+					</a>
+			  	</div>
+			</nav>
+			
+	    	<div id="page-container" class="container">
+			    <div class="row">
+			   		 <div class="col s12 offset-m3 m6">
+			   		 	<h3 class="center-align page-title">S'inscrire</h3>
+					</div>
+				</div>
+			</div>
+			<footer class="page-footer teal">
+				<div class="footer-copyright">
+		            <div class="container">
+		            	développé par Nicolas Léotier
+		            </div>
+		        </div>
+	        </footer>
+		</div>
+		
+		<!-- Modal Structure -->
+		<div id="modal-auth" class="modal">
+		  	<div class="modal-content">
+		    	<div class="row">
+		   		 	<div class="col s12">
+				      <ul class="tabs tabs-fixed-width">
+				        <li class="tab col s6"><a class="active" href="#inscription">Inscription</a></li>
+				        <li class="tab col s6"><a href="#connexion">Connexion</a></li>
+				      </ul>
+				    </div>
+				    
+			   		<div id="inscription" class="col s12 offset-m3 m6">
+			        	<h:form>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">perm_identity</i>
+								<p:inputText id="firstname" name="firstname" value="#{personController.person.firstname}" styleClass="validate" type="text" />
+								<p:outputLabel for="firstname" value="Prénom" />
+								<p:message for="firstname" style="color:red" />
+							</div>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">perm_identity</i>
+								<p:inputText id="lastname" name="lastname" value="#{personController.person.lastname}"  styleClass="validate" type="text" />
+								<p:outputLabel for="lastname" value="Nom" />
+								<p:message for="lastname" style="color:red" />
+							</div>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">vpn_key</i>
+								<p:inputText id="password" name="password" value="#{personController.person.password}" styleClass="validate" type="password" />
+								<p:outputLabel for="password" value="Mot de passe" />
+								<p:message for="password" style="color:red" />
+							</div>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">email</i>
+								<p:inputText id="email" name="email" value="#{personController.person.email}"  styleClass="validate" type="email" />
+								<p:outputLabel for="email" value="Email" />
+								<p:message for="email" style="color:red" />
+							</div>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">language</i>
+								<p:inputText id="website" name="website" value="#{personController.person.website}" styleClass="validate" type="url" />
+								<p:outputLabel for="website" value="Site Web" />
+								<p:message for="website" style="color:red" />
+							</div>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">today</i>
+								<p:inputText id="birthdate" name="birthdate" value="#{personController.person.birthdate}" styleClass="datepicker" type="date">
+									<f:convertDateTime pattern="dd/mm/yyyy" />
+								</p:inputText>
+								<p:outputLabel for="birthdate" value="Date de naissance" />
+								<p:message for="birthdate" style="color:red" />
+							</div>
+							<h:commandLink type="button" styleClass="btn waves-effect waves-light right red lighten-2 send" action="#{personController.storePerson}">
+							    <i class="material-icons right">send</i> Envoyer
+							 </h:commandLink >
+						</h:form>
+					</div>
+					
+					<div id="connexion" class="col s12 offset-m3 m6">
+			        	<h:form>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">email</i>
+								<p:inputText id="emailCo" name="email" binding="#{email}"  styleClass="validate" type="email" />
+								<p:outputLabel for="emailCo" value="Email" />
+								<p:message for="emailCo" style="color:red" />
+							</div>
+				        	<div class="input-field">
+				        		<i class="material-icons prefix">vpn_key</i>
+								<p:inputText id="passwordCo" name="password" binding="#{password}" styleClass="validate" type="password" />
+								<p:outputLabel for="passwordCo" value="Mot de passe" />
+								<p:message for="passwordCo" style="color:red" />
+							</div>
+							<h:commandLink type="button" styleClass="btn waves-effect waves-light right red lighten-2 send"
+								action="#{authenticationController.login(email.value, password.value)}">
+							    <i class="material-icons right">send</i> Envoyer
+							 </h:commandLink >
+						</h:form>
+					</div>
+				</div>
+		  	</div>
+		</div>
+		
+		<h:outputScript library="js" name="materialize.min.js" />
+		<script>
+		$( document ).ready(function() {
+			$('.modal').modal({
+				ready: function(modal, trigger) {
+					$('ul.tabs').tabs();
+				}
+			});
+			$('.datepicker').pickadate({
+				monthsFull: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+			    monthsShort: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec' ],
+			    weekdaysFull: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
+			    weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
+				today: '',
+				clear: '',
+				close: 'fermer',
+				format: 'dd/mm/yyyy',
+			    labelMonthNext:"Mois suivant",
+			    labelMonthPrev:"Mois précédent",
+			    labelMonthSelect:"Sélectionner un mois",
+			    labelYearSelect:"Sélectionner une année"
+			});
+		});
+		</script>
+    </h:body>  
+</html> 
